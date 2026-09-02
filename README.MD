@@ -120,7 +120,7 @@ You will need them later while creating the database connection string.
 Open your PostgreSQL terminal (psql) or pgAdmin and run:
 
 ```sql
-CREATE DATABASE langgraph_memory_demo;
+CREATE DATABASE langgraph_memory;
 ```
 
 ### Step 6: Get Required API Keys
