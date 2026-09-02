@@ -154,7 +154,7 @@ python main.py
 **Option B: Run Streamlit Web Application**
 
 ```bash
-streamlit run frontend.py
+streamlit run streamlit_app.py
 ```
 
 ---
@@ -167,11 +167,6 @@ Test the multi-agent system with prompts such as:
 
 ---
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to open a PR or issue on GitHub.
-
----
 
 ## 👤 Author
 
