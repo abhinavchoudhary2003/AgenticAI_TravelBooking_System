@@ -261,13 +261,14 @@ graph.add_edge("final_agent", END)
 
 # # Create a LangGraph checkpointer using the PostgreSQL connection.
 # checkpointer = PostgresSaver(_conn)
+checkpointer = MemorySaver()
 
 # # Create the required checkpoint tables in the database if they don't already exist.
-# checkpointer.setup()
+checkpointer.setup()
 
 
 # Compile the graph so it becomes a runnable application. The checkpointer is connected to the graph so LangGraph can save and restore the state of each conversation.
-app = graph.compile()
+app = graph.compile(checkpointer=checkpointer)
 
 # This block runs only when we directly run this Python file, not when this file is imported into another file. this is just for testing the agents 
 # if __name__ == "__main__":
