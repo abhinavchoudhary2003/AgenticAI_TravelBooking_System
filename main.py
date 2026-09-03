@@ -7,7 +7,7 @@ from typing import TypedDict, Annotated
 import operator
 # 'operator' -> Standard library. Provides operator.add, which we pass into Annotated[] so LangGraph knows to APPEND new messages to the messages list instead of overwriting it on every node update.
 
-import psycopg # 'psycopg' (psycopg3) -> PostgreSQL database driver for Python. Required because we're using Postgres as the backend to store LangGraph checkpoints
+# import psycopg # 'psycopg' (psycopg3) -> PostgreSQL database driver for Python. Required because we're using Postgres as the backend to store LangGraph checkpoints
 
 
 from langgraph.graph import StateGraph, START, END
@@ -257,17 +257,17 @@ graph.add_edge("final_agent", END)
 
 # Open a connection to our PostgreSQL database.
 # _conn = psycopg.connect(DATABASE_URL)
-_conn = psycopg.connect(DATABASE_URL, autocommit=True)
+# _conn = psycopg.connect(DATABASE_URL, autocommit=True)
 
-# Create a LangGraph checkpointer using the PostgreSQL connection.
-checkpointer = PostgresSaver(_conn)
+# # Create a LangGraph checkpointer using the PostgreSQL connection.
+# checkpointer = PostgresSaver(_conn)
 
-# Create the required checkpoint tables in the database if they don't already exist.
-checkpointer.setup()
+# # Create the required checkpoint tables in the database if they don't already exist.
+# checkpointer.setup()
 
 
 # Compile the graph so it becomes a runnable application. The checkpointer is connected to the graph so LangGraph can save and restore the state of each conversation.
-app = graph.compile(checkpointer=checkpointer)
+app = graph.compile()
 
 # This block runs only when we directly run this Python file, not when this file is imported into another file. this is just for testing the agents 
 # if __name__ == "__main__":
